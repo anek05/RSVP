@@ -4,7 +4,7 @@ import axios from "axios";
 class WeddingForm extends React.Component {
   handleFileSelect(evt) {
     var reader = new FileReader();
-    var file = (file = document.querySelector("input[name='file']").files[0]);
+    var file = document.querySelector("input[name='file']").files[0];
     console.log(typeof file);
     var fileName = file.name;
     // reader.onerror = this.errorHandler;

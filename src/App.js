@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import WeddingForm from "./WeddingForm.js";
 import "./App.css";
 
