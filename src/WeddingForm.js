@@ -2,6 +2,15 @@ import React from "react";
 import axios from "axios";
 
 class WeddingForm extends React.Component {
+  state = {
+    value: "ja",
+  };
+
+  handleAlkohol = (e) => {
+    this.setState({ value: e.target.value });
+    console.log(this.state);
+  };
+
   handleFileSelect(evt) {
     var reader = new FileReader();
     var file = document.querySelector("input[name='file']").files[0];
@@ -27,30 +36,35 @@ class WeddingForm extends React.Component {
   /********************** RSVP **********************/
   handleSubmit(e) {
     e.preventDefault();
-    // var form = document.querySelector("form");
-    // var data = new URLSearchParams(new FormData(form)).toString();
+    var formData = new FormData();
 
     var nameInput = document.getElementById("name").value;
     var mailInput = document.getElementById("email").value;
-    // var imagefile = document.querySelector("#file");
-    console.log("test");
-    var formData = new FormData();
+    var allergierInput = document.getElementById("allergier").value;
     formData.append("name", nameInput);
     formData.append("email", mailInput);
-    // formData.append("file", imagefile.files[0]);
+    formData.append("allergier", allergierInput);
 
-    var data = document.querySelector("div[id='data']");
-    console.log(data);
+    var alkoholJa = document.getElementById("alkohol-ja");
+    var alkoholNej = document.getElementById("alkohol-nej");
+    if (alkoholJa.checked) {
+      formData.append("alkohol", alkoholJa.value);
+    } else if (alkoholNej.checked) {
+      formData.append("alkohol", alkoholNej.value);
+    }
+
+    var fragaInput = document.getElementById("fraga").value;
+    formData.append("fråga", fragaInput);
+
     var fileData = document.getElementById("data").value;
     var mimetype = document.getElementById("mimetype").value;
     var filename = document.getElementById("filename").value;
-
     formData.append("data", fileData);
     formData.append("mimetype", mimetype);
     formData.append("filename", filename);
-    for (var pair of formData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
+    // for (var pair of formData.entries()) {
+    //   console.log(pair[0] + ", " + pair[1]);
+    // }
 
     axios
       .post(
@@ -63,14 +77,15 @@ class WeddingForm extends React.Component {
         }
       )
       .then(function (response) {
-        for (var pair of formData.entries()) {
-          console.log(pair[0] + ", " + pair[1]);
+        console.log(response.status);
+        if (response.status == 200) {
+          document.getElementById("rsvp-form").reset();
         }
-        console.log(response);
       });
   }
 
   render() {
+    const { value } = this.state;
     return (
       <form
         id="rsvp-form"
@@ -81,28 +96,64 @@ class WeddingForm extends React.Component {
       >
         <div class="">
           <div class="">
-            <i class="fa fa-envelope"></i>
+            <label for="name">Name</label>
+            <input name="name" id="name" class="" placeholder="Namn" required />
+          </div>
+          <div class="">
+            <label for="email">Mailadress</label>
             <input
               type="email"
               name="email"
               id="email"
               class=""
-              placeholder="Your email"
+              placeholder="Mailadress"
               required
             />
           </div>
+          <div>
+            <label for="allergier">Allergier</label>
+            <input name="allergier" id="allergier" placeholder="Allergier" />
+          </div>
+
+          <div>
+            <p>Önskar du alkholhaltiga drycker till maten?</p>
+            <div>
+              <input
+                type="radio"
+                id="alkohol-ja"
+                name="alkohol-ja"
+                value="ja"
+                checked={value === "ja"}
+                onChange={this.handleAlkohol}
+              />
+              <label for="alkohol-ja">Ja</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="alkohol-nej"
+                name="alkohol-nej"
+                value="nej"
+                checked={value === "nej"}
+                onChange={this.handleAlkohol}
+              />
+              <label for="alkohol-nej">Nej</label>
+            </div>
+          </div>
+
           <div class="">
-            <i class="fa fa-user"></i>
+            <label for="fraga">
+              Passa på att ställa en fråga till brudparet?
+            </label>
             <input
-              name="name"
-              id="name"
+              name="fraga"
+              id="fraga"
               class=""
-              placeholder="Your name"
-              required
+              placeholder="Meningen med livet"
             />
           </div>
+
           <div class="">
-            <i class="fa fa-user"></i>
             <input
               type="file"
               id="file"
