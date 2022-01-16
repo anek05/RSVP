@@ -78,7 +78,7 @@ class WeddingForm extends React.Component {
       )
       .then(function (response) {
         console.log(response.status);
-        if (response.status == 200) {
+        if (response.status === 200) {
           document.getElementById("rsvp-form").reset();
         }
       });
