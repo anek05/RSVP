@@ -1,5 +1,6 @@
-import WeddingForm from "./WeddingForm.js";
 import "./App.css";
+import WeddingForm from "./WeddingForm.js";
+import Platser from "./Platser/Platser.js";
 
 function App() {
   return (
@@ -19,7 +20,10 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <WeddingForm />
+    <div className="App">
+      <WeddingForm />
+      <Platser />
+    </div>
   );
 }
 
