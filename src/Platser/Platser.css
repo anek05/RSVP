@@ -5,6 +5,27 @@
   /* The width is the width of the web page */
 }
 
-p {
-  color: coral;
+.place-card {
+  /* margin-top: 2em; */
+  /* padding: 10em; */
+  position: relative;
+}
+
+.fest {
+  margin-top: 27em;
+  /* padding: 10em; */
+  position: relative;
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .place-card {
+    margin-top: 5em;
+    /* padding: 10em; */
+    position: relative;
+  }
+  .fest {
+    /* margin-top: 2em; */
+    /* padding: 10em; */
+    position: relative;
+  }
 }
