@@ -55,9 +55,20 @@ function App() {
         <h2 className="text-center">Platser</h2>
         <Platser />
       </div>
-      {/* <div className="row osa-section">
+      <div id="onskelista" className="onskelista text-center mb-5">
+        <h2>Önskelista</h2>
+        <p className="mb-0">
+          På länken nedan finns brudparets önskelista, om du vill ha tips. Det
+          går att se ifall något redan är ikryssat.
+        </p>
+        <a href="https://presentlistan.nu/9895C3/" className="mt-0">
+          Önskelista
+        </a>
+      </div>
+      <div className="row">
+        <h2 className="text-center">OSA</h2>
         <WeddingForm />
-      </div> */}
+      </div>
     </div>
   );
 }

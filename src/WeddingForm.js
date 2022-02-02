@@ -17,6 +17,8 @@ class WeddingForm extends React.Component {
     console.log(typeof file);
     var fileName = file.name;
     // reader.onerror = this.errorHandler;
+    document.getElementById("laddar").innerText = "Laddar..";
+    document.getElementById("skicka").disabled = true;
     reader.onload = function (e) {
       var html =
         '<input type="" id="data" value="' +
@@ -29,6 +31,8 @@ class WeddingForm extends React.Component {
       html += '<input type="" id="filename" value="' + fileName + '" >';
       console.log("test");
       document.getElementById("filedata").innerHTML = html;
+      document.getElementById("laddar").innerText = "";
+      document.getElementById("skicka").disabled = false;
     };
     reader.readAsDataURL(file);
   }
@@ -94,66 +98,84 @@ class WeddingForm extends React.Component {
         method="POST"
         onSubmit={this.handleSubmit}
       >
-        <div class="">
-          <div class="">
-            <label for="name">Name</label>
-            <input name="name" id="name" class="" placeholder="Namn" required />
-          </div>
-          <div class="">
-            <label for="email">Mailadress</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              class=""
-              placeholder="Mailadress"
-              required
-            />
-          </div>
-          <div>
-            <label for="allergier">Allergier</label>
-            <input name="allergier" id="allergier" placeholder="Allergier" />
-          </div>
-
-          <div>
-            <p>Önskar du alkholhaltiga drycker till maten?</p>
-            <div>
+        <div class="mt-5">
+          <div className="row">
+            <div class="col">
+              <label for="name" className="d-block">
+                Namn
+              </label>
               <input
-                type="radio"
-                id="alkohol-ja"
-                name="alkohol-ja"
-                value="ja"
-                checked={value === "ja"}
-                onChange={this.handleAlkohol}
+                name="name"
+                id="name"
+                class=""
+                placeholder="Namn"
+                required
               />
-              <label for="alkohol-ja">Ja</label>
             </div>
-            <div>
+            <div class="col">
+              <label for="email">Mailadress</label>
               <input
-                type="radio"
-                id="alkohol-nej"
-                name="alkohol-nej"
-                value="nej"
-                checked={value === "nej"}
-                onChange={this.handleAlkohol}
+                type="email"
+                name="email"
+                id="email"
+                className="d-block"
+                placeholder="Mailadress"
+                required
               />
-              <label for="alkohol-nej">Nej</label>
             </div>
           </div>
+          <div className="row mt-4">
+            <div className="col">
+              <label for="allergier" className="d-block">
+                Allergier
+              </label>
+              <input name="allergier" id="allergier" placeholder="Allergier" />
+            </div>
+            <div className="col">
+              <p className="mb-0">
+                Önskar du alkholhaltiga drycker till maten?
+              </p>
+              <div>
+                <input
+                  type="radio"
+                  id="alkohol-ja"
+                  name="alkohol-ja"
+                  value="ja"
+                  checked={value === "ja"}
+                  onChange={this.handleAlkohol}
+                />
+                <label for="alkohol-ja">Ja</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="alkohol-nej"
+                  name="alkohol-nej"
+                  value="nej"
+                  checked={value === "nej"}
+                  onChange={this.handleAlkohol}
+                />
+                <label for="alkohol-nej">Nej</label>
+              </div>
+            </div>
+          </div>
 
-          <div class="">
-            <label for="fraga">
+          <div class="row">
+            <label for="fraga" className="d-block">
               Passa på att ställa en fråga till brudparet?
             </label>
-            <input
-              name="fraga"
-              id="fraga"
-              class=""
-              placeholder="Meningen med livet"
-            />
+            <div>
+              <input
+                name="fraga"
+                id="fraga"
+                className="col-6"
+                placeholder="Meningen med livet"
+              />
+            </div>
           </div>
 
-          <div class="">
+          <div class="row mt-4">
+            <label for="file">Skicka med en enkel bild på dig själv</label>
             <input
               type="file"
               id="file"
@@ -165,12 +187,13 @@ class WeddingForm extends React.Component {
               onChange={this.handleFileSelect}
             />
           </div>
+          <div id="filedata"></div>
+          <p id="laddar"></p>
+          <div class="row">
+            <div class="col-md-12" id="alert-wrapper"></div>
+          </div>
         </div>
-        <div id="filedata"></div>
-        <div class="row">
-          <div class="col-md-12" id="alert-wrapper"></div>
-        </div>
-        <button class="btn btn-primary" type="submit">
+        <button id="skicka" class="btn btn-primary" type="submit">
           Skicka
         </button>
       </form>

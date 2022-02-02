@@ -29,13 +29,13 @@ class Platser extends React.Component {
       height: "100%",
     };
     return (
-      <div>
-        <div className="row">
+      <div className="row">
+        <div className="col">
           <div className="place-card">
             <h5>Vigsel</h5>
             <p>Landskyrkan Alingsås 15.00</p>
           </div>
-          <div className="col-8 align-self-end">
+          <div className="">
             <Map
               google={this.props.google}
               style={style}
@@ -54,12 +54,12 @@ class Platser extends React.Component {
             </Map>
           </div>
         </div>
-        <div className="row">
+        <div className="col">
           <div className="fest">
             <h5>Fest och middag</h5>
             <p>Chalmers Grand Cabin i Härryda</p>
           </div>
-          <div className="col-8 align-self-end">
+          <div className="">
             <Map
               google={this.props.google}
               style={style}
