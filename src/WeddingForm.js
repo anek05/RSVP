@@ -40,6 +40,11 @@ class WeddingForm extends React.Component {
   /********************** RSVP **********************/
   handleSubmit(e) {
     e.preventDefault();
+    var spinner = document.getElementById("spinner");
+    var skicka = document.getElementById("skicka");
+    skicka.hidden = true;
+    spinner.hidden = false;
+
     var formData = new FormData();
 
     var nameInput = document.getElementById("name").value;
@@ -84,6 +89,8 @@ class WeddingForm extends React.Component {
         console.log(response.status);
         if (response.status === 200) {
           document.getElementById("rsvp-form").reset();
+          spinner.hidden = true;
+          skicka.hidden = false;
         }
       });
   }
@@ -93,26 +100,20 @@ class WeddingForm extends React.Component {
     return (
       <form
         id="rsvp-form"
-        class="form-group"
+        className="form-group"
         action=""
         method="POST"
         onSubmit={this.handleSubmit}
       >
         <div class="mt-5">
           <div className="row">
-            <div class="col">
+            <div className="col">
               <label for="name" className="d-block">
                 Namn
               </label>
-              <input
-                name="name"
-                id="name"
-                class=""
-                placeholder="Namn"
-                required
-              />
+              <input name="name" id="name" placeholder="Namn" required />
             </div>
-            <div class="col">
+            <div className="col">
               <label for="email">Mailadress</label>
               <input
                 type="email"
@@ -181,17 +182,19 @@ class WeddingForm extends React.Component {
               id="file"
               accept="image/png, image/jpeg"
               name="file"
-              class=""
               placeholder="Bild"
               required
               onChange={this.handleFileSelect}
             />
           </div>
-          <div id="filedata"></div>
+          <div hidden id="filedata"></div>
           <p id="laddar"></p>
-          <div class="row">
-            <div class="col-md-12" id="alert-wrapper"></div>
-          </div>
+          <div
+            id="spinner"
+            className="spinner-border"
+            role="status"
+            hidden
+          ></div>
         </div>
         <button id="skicka" class="btn btn-primary" type="submit">
           Skicka

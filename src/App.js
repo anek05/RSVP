@@ -5,7 +5,7 @@ import WeddingForm from "./WeddingForm.js";
 
 function App() {
   return (
-    <div className="App container justify-content-center">
+    <div id="hem" className="App container justify-content-center">
       <Start />
       <div className="row text-center my-5">
         <h2>VI SKA GIFTA OSS</h2>
@@ -13,7 +13,24 @@ function App() {
         <p>Vi ser verkligen fram emot att fira denna dag tillsammans med er!</p>
         <p>Kram Elsa och Sebastian</p>
       </div>
-      <div className="row text-center my-5">
+      <div id="nav" className="row justify-content-between sticky-top bg-white">
+        <a className="btn btn-outline-dark btn-sm col" href="#hem">
+          Hem
+        </a>
+        <a className="btn btn-outline-dark btn-sm col" href="#information">
+          Information
+        </a>
+        <a className="btn btn-outline-dark btn-sm col" href="#platser">
+          Platser
+        </a>
+        <a className="btn btn-outline-dark btn-sm col" href="#onskelista">
+          Önskelista
+        </a>
+        <a className="btn btn-outline-dark btn-sm col" href="#osa">
+          OSA
+        </a>
+      </div>
+      <div id="information" className="row text-center my-5">
         <h2>Bröllopsdagen</h2>
         <p className="col-8 mx-auto">
           Vigsel äger rum klockan 15.00 i Landskyrkan, Alingsås.
@@ -51,7 +68,7 @@ function App() {
           </i>
         </div>
       </div>
-      <div className="row">
+      <div id="platser" className="row">
         <h2 className="text-center">Platser</h2>
         <Platser />
       </div>
@@ -65,7 +82,7 @@ function App() {
           Önskelista
         </a>
       </div>
-      <div className="row">
+      <div id="osa" className="row mb-5">
         <h2 className="text-center">OSA</h2>
         <WeddingForm />
       </div>
