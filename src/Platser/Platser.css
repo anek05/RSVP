@@ -1,31 +1,49 @@
-.map {
-  height: 400px;
+/* .map { */
+  /* height: 400px; */
   /* The height is 400 pixels */
-  width: 100%;
+  /* width: 100%; */
   /* The width is the width of the web page */
-}
+/* } */
 
 .place-card {
-  /* margin-top: 2em; */
+  /* margin-top: -4.5em; */
   /* padding: 10em; */
   position: relative;
 }
 
 .fest {
-  margin-top: 27em;
+  /* margin-top: -1.5em; */
   /* padding: 10em; */
   position: relative;
 }
 
 @media (min-width: 320px) and (max-width: 768px) {
   .place-card {
-    margin-top: 5em;
+    margin-top: 17em;
     /* padding: 10em; */
     position: relative;
   }
   .fest {
-    /* margin-top: 2em; */
+    margin-top: 17em;
+    margin-bottom: 28em;
     /* padding: 10em; */
     position: relative;
   }
+
+  .fest-header{
+    margin-top: 18em;
+  }
+
+  .image{
+    position: absolute;
+  }
+
+  .fest-image{
+    margin-top: 27em;
+  }
+
+  .vigsel-image{
+    margin-top: 5em;
+  }
+
 }

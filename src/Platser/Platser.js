@@ -1,6 +1,8 @@
 import React from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 import "./Platser.css";
+import vigselImage from "../Images/Landskyrkan.jpeg";
+import festImage from "../Images/grandcabin.jpeg";
 
 class Platser extends React.Component {
   onMarkerClick(props, marker, e) {
@@ -20,7 +22,7 @@ class Platser extends React.Component {
     const festlng = 12.266444;
     const style = {
       width: "100%",
-      height: "40vh",
+      height: "26em",
     };
 
     const containerStyle = {
@@ -30,53 +32,59 @@ class Platser extends React.Component {
     };
     return (
       <div className="row">
-        <div className="col">
-          <div className="place-card">
-            <h5>Vigsel</h5>
-            <p>Landskyrkan Alingsås 15.00</p>
+        <div className="row my-5">
+              <h5>Vigsel</h5>
+              <p>Landskyrkan Alingsås 15.00</p>
+          <div className="col">
+            <div className="place-card">
+            </div>
+            <div className="">
+              <Map
+                google={this.props.google}
+                style={style}
+                containerStyle={containerStyle}
+                zoom={17}
+                initialCenter={{
+                  lat: lat,
+                  lng: lng,
+                }}
+              >
+                <Marker
+                  name={"Landskyrkan"}
+                  position={{ lat: lat, lng: lng }}
+                  onClick={this.onMarkerClick}
+                />
+              </Map>
+            </div>
           </div>
-          <div className="">
-            <Map
-              google={this.props.google}
-              style={style}
-              containerStyle={containerStyle}
-              zoom={17}
-              initialCenter={{
-                lat: lat,
-                lng: lng,
-              }}
-            >
-              <Marker
-                name={"Landskyrkan"}
-                position={{ lat: lat, lng: lng }}
-                onClick={this.onMarkerClick}
-              />
-            </Map>
+          <div className="col image vigsel-image">
+                <img src={vigselImage} alt="Landskyrkan" className="img-fluid"></img>
           </div>
         </div>
-        <div className="col">
-          <div className="fest">
-            <h5>Fest och middag</h5>
-            <p>Chalmers Grand Cabin i Härryda</p>
-          </div>
-          <div className="">
-            <Map
-              google={this.props.google}
-              style={style}
-              containerStyle={containerStyle}
-              zoom={17}
-              initialCenter={{
-                lat: festlat,
-                lng: festlng,
-              }}
-            >
-              <Marker
-                name={"Landskyrkan"}
-                position={{ lat: festlat, lng: festlng }}
-                onClick={this.onFestMarkerClick}
-              />
-            </Map>
-          </div>
+        <div className="row mt-3">
+              <h5 className="fest-header">Fest och middag</h5>
+              <p>Chalmers Grand Cabin i Härryda</p>
+              <div className="col image fest-image">
+                <img src={festImage} alt="Chalmers Grand cabin" className="img-fluid d-block"></img>
+              </div>
+            <div className="fest col">
+              <Map
+                google={this.props.google}
+                style={style}
+                containerStyle={containerStyle}
+                zoom={17}
+                initialCenter={{
+                  lat: festlat,
+                  lng: festlng,
+                }}
+              >
+                <Marker
+                  name={"Landskyrkan"}
+                  position={{ lat: festlat, lng: festlng }}
+                  onClick={this.onFestMarkerClick}
+                />
+              </Map>
+            </div>
         </div>
       </div>
     );

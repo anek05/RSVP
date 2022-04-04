@@ -1,10 +1,32 @@
 .osa-section {
   margin-top: 40rem;
 }
-.onskelista {
+/* .onskelista {
   margin-top: 27em;
+} */
+
+.App{  
+  font-family: "Playfair Display", serif !important;
+  letter-spacing: 0.07rem;
+}
+
+.nav-btn{
+  background-color: #f4ece2;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
 }
 
 body {
   background-color: #f4ece2;
+  background-size: 810px 1080px;
+  background-repeat: no-repeat;
+  background-image: url("Images/background.png");
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  body {
+    background-image: url("Images/background.png");
+  }
 }
