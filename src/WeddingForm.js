@@ -51,9 +51,9 @@ class WeddingForm extends React.Component {
     var nameInput = document.getElementById("name").value;
     var mailInput = document.getElementById("email").value;
     var allergierInput = document.getElementById("allergier").value;
-    formData.append("name", nameInput);
+    formData.append("namn", nameInput);
     formData.append("email", mailInput);
-    formData.append("allergier", allergierInput);
+    formData.append("allergier/kost", allergierInput);
 
     var alkoholJa = document.getElementById("alkohol-ja");
     var alkoholNej = document.getElementById("alkohol-nej");
@@ -78,7 +78,7 @@ class WeddingForm extends React.Component {
     formData.append("kommer", "ja")
     axios
       .post(
-        "https://script.google.com/macros/s/AKfycbzIPgSVXZJVd20qcS-r4yzP9qtpBgSfe78b5p6mIaDUckMJiAHG4UwEEWu6t_OUd-AAMg/exec",
+        "https://script.google.com/macros/s/AKfycbzor2X6JTr8wPg00D1tWEIy0h0rb0J0P3OMNJRGFXJu8qL3AbRGImAZTsizVr2_TKIuPQ/exec",
         formData,
         {
           headers: {
@@ -118,12 +118,12 @@ class WeddingForm extends React.Component {
     console.log(":(");
 
     var formData = new FormData();
-    formData.append("name", document.getElementById("not-coming-name").value)
+    formData.append("namn", document.getElementById("not-coming-name").value)
     formData.append("kommer", "nej")
 
     axios
       .post(
-        "https://script.google.com/macros/s/AKfycbzIPgSVXZJVd20qcS-r4yzP9qtpBgSfe78b5p6mIaDUckMJiAHG4UwEEWu6t_OUd-AAMg/exec",
+        "https://script.google.com/macros/s/AKfycbzor2X6JTr8wPg00D1tWEIy0h0rb0J0P3OMNJRGFXJu8qL3AbRGImAZTsizVr2_TKIuPQ/exec",
         formData,
         {
           headers: {
