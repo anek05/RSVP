@@ -11,10 +11,11 @@ class Start extends React.Component {
           <span className="fat-font name">ELSA & SEBASTIAN</span>
           <span className="small-font">13 AUGUSTI 2022</span>
         </div>
-        <div class="text-center">
-          <div>
-            <span className="fat-font welcome"> VÄLKOMMEN </span>
-            <hr></hr>
+        <div className="text-center">
+          <div className="välkommenContent">
+            <h4 className="fat-font welcome text-dark">
+              <span>VÄLKOMMEN</span>
+            </h4>
           </div>
           <img src={startImage} alt="Landing" className="img-fluid mt-4" />
         </div>
