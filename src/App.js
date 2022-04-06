@@ -60,8 +60,7 @@ function App() {
           </p>
           <p className="col-8 mx-auto">
             Hoppas du vill vara med och förgylla vår dag! Tal och spex är varmt
-            välkommet! Anmälan görs till värdarna ( namn på värdarna trevligt
-            att ha med här) via 13aug2022@gmail.com
+            välkommet! Anmälan görs till värdarna via 13aug2022@gmail.com
           </p>
           <div className="row text-center my-1 mt-4">
             <h3>Barn</h3>

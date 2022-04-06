@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import "./WeddingForm.css";
+import sebbeImage from "./Images/sebbeexempel.jpg";
+import elsaImage from "./Images/elsaexempel.jpg";
 
 class WeddingForm extends React.Component {
   state = {
@@ -289,9 +291,23 @@ class WeddingForm extends React.Component {
                 accept="image/png, image/jpeg"
                 name="file"
                 placeholder="Bild"
-                required
                 onChange={this.handleFileSelect}
               />
+            </div>
+            <div className="row">
+              <i>Exempelbilder</i>
+              <div>
+                <img
+                  src={elsaImage}
+                  alt="Exempelbild 1"
+                  className="img-fluid exampel"
+                ></img>
+                <img
+                  src={sebbeImage}
+                  alt="Exempelbild 2"
+                  className="img-fluid exampel"
+                ></img>
+              </div>
             </div>
             <div hidden id="filedata"></div>
             <p id="laddar"></p>
