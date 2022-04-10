@@ -94,6 +94,7 @@ class WeddingForm extends React.Component {
           document.getElementById("rsvp-form").reset();
           spinner.hidden = true;
           skicka.hidden = false;
+          document.getElementById("confirmtext").hidden = false;
         }
       });
   }
@@ -138,6 +139,7 @@ class WeddingForm extends React.Component {
           document.getElementById("not-coming-form").reset();
           document.getElementById("not-coming-spinner").hidden = true;
           document.getElementById("not-coming-skicka").hidden = false;
+          document.getElementById("confirmtextno").hidden = false;
         }
       });
   }
@@ -186,6 +188,9 @@ class WeddingForm extends React.Component {
           >
             Skicka
           </button>
+          <span hidden id="confirmtextno">
+            <i>Vi ses i Augusti!</i>
+          </span>
           <div
             id="not-coming-spinner"
             className="spinner-border"
@@ -321,6 +326,9 @@ class WeddingForm extends React.Component {
           <button id="skicka" class="btn send-button text-light" type="submit">
             Skicka
           </button>
+          <span hidden id="confirmtext">
+            <i>Vi ses i Augusti!</i>
+          </span>
         </form>
       </div>
     );
