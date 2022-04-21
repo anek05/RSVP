@@ -17,12 +17,12 @@ class WeddingForm extends React.Component {
   handleFileSelect(evt) {
     var reader = new FileReader();
     var file = document.querySelector("input[name='file']").files[0];
-    console.log(typeof file);
     var fileName = file.name;
     // reader.onerror = this.errorHandler;
     document.getElementById("laddar").innerText = "Laddar..";
     document.getElementById("skicka").disabled = true;
-    reader.onload = function (e) {
+    reader.onloadend = function (e) {
+      console.log(e.target.result);
       var html =
         '<input type="" id="data" value="' +
         e.target.result.replace(/^.*,/, "") +
