@@ -22,7 +22,7 @@ class WeddingForm extends React.Component {
     document.getElementById("laddar").innerText = "Laddar..";
     document.getElementById("skicka").disabled = true;
     reader.onloadend = function (e) {
-      console.log(e.target.result);
+      document.getElementById("preview").src = reader.result;
       var html =
         '<input type="" id="data" value="' +
         e.target.result.replace(/^.*,/, "") +
@@ -311,6 +311,7 @@ class WeddingForm extends React.Component {
               </div>
             </div>
             <div hidden id="filedata"></div>
+            <img id="preview" alt="preview"></img>
             <p id="laddar"></p>
             <div
               id="spinner"
