@@ -188,15 +188,17 @@ class WeddingForm extends React.Component {
           >
             Skicka
           </button>
-          <span hidden id="confirmtextno">
-            <i>Vi ses i Augusti!</i>
-          </span>
           <div
             id="not-coming-spinner"
             className="spinner-border"
             role="status"
             hidden
           ></div>
+          <p>
+            Ifall du upplever problem med att OSA kan du skicka in ovanstående
+            info direkt till 13aug2022@gmail.com (ha med ifall du kan komma
+            eller ej)
+          </p>
         </form>
 
         <form
@@ -329,6 +331,11 @@ class WeddingForm extends React.Component {
           <span hidden id="confirmtext">
             <i>Vi ses i Augusti!</i>
           </span>
+          <p>
+            Ifall du upplever problem med att OSA kan du skicka in ovanstående
+            infon direkt till 13aug2022@gmail.com (ha med ifall du kan komma
+            eller ej)
+          </p>
         </form>
       </div>
     );
