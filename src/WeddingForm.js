@@ -17,12 +17,12 @@ class WeddingForm extends React.Component {
   handleFileSelect(evt) {
     var reader = new FileReader();
     var file = document.querySelector("input[name='file']").files[0];
-    console.log(typeof file);
     var fileName = file.name;
     // reader.onerror = this.errorHandler;
     document.getElementById("laddar").innerText = "Laddar..";
     document.getElementById("skicka").disabled = true;
-    reader.onload = function (e) {
+    reader.onloadend = function (e) {
+      console.log(e.target.result);
       var html =
         '<input type="" id="data" value="' +
         e.target.result.replace(/^.*,/, "") +
@@ -74,10 +74,8 @@ class WeddingForm extends React.Component {
     formData.append("data", fileData);
     formData.append("mimetype", mimetype);
     formData.append("filename", filename);
-    // for (var pair of formData.entries()) {
-    //   console.log(pair[0] + ", " + pair[1]);
-    // }
     formData.append("kommer", "ja");
+
     axios
       .post(
         "https://script.google.com/macros/s/AKfycbzor2X6JTr8wPg00D1tWEIy0h0rb0J0P3OMNJRGFXJu8qL3AbRGImAZTsizVr2_TKIuPQ/exec",
@@ -103,12 +101,10 @@ class WeddingForm extends React.Component {
     console.log("klick klick");
     console.log(answer);
     if (answer === "ja") {
-      // document.getElementById("kommer-du").hidden = true;
       document.getElementById("not-coming-form").hidden = true;
       document.getElementById("rsvp-form").hidden = false;
       document.getElementById("rsvp-form").scrollIntoView();
     } else if (answer === "nej") {
-      // document.getElementById("kommer-du").hidden = true;
       document.getElementById("not-coming-form").hidden = false;
       document.getElementById("rsvp-form").hidden = true;
       document.getElementById("rsvp-form").scrollIntoView();
@@ -295,7 +291,7 @@ class WeddingForm extends React.Component {
               <input
                 type="file"
                 id="file"
-                accept="image/png, image/jpeg"
+                accept="image/*"
                 name="file"
                 placeholder="Bild"
                 onChange={this.handleFileSelect}
