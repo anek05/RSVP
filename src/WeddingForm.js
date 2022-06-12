@@ -67,18 +67,22 @@ class WeddingForm extends React.Component {
 
     var fragaInput = document.getElementById("fraga").value;
     formData.append("fråga", fragaInput);
+    if (document.getElementById("data") == null) {
+      console.log("null");
+    } else {
+      var fileData = document.getElementById("data").value;
+      var mimetype = document.getElementById("mimetype").value;
+      var filename = document.getElementById("filename").value;
+      formData.append("data", fileData);
+      formData.append("mimetype", mimetype);
+      formData.append("filename", filename);
+    }
 
-    var fileData = document.getElementById("data").value;
-    var mimetype = document.getElementById("mimetype").value;
-    var filename = document.getElementById("filename").value;
-    formData.append("data", fileData);
-    formData.append("mimetype", mimetype);
-    formData.append("filename", filename);
     formData.append("kommer", "ja");
 
     axios
       .post(
-        "https://script.google.com/macros/s/AKfycbzor2X6JTr8wPg00D1tWEIy0h0rb0J0P3OMNJRGFXJu8qL3AbRGImAZTsizVr2_TKIuPQ/exec",
+        "https://script.google.com/macros/s/AKfycbwfseJQ1YZozDPvfAuHAc3mK7GaEC4GstXQDM38oDd0EUbWHaH5WrHx_6QQ72NYdT84gw/exec",
         formData,
         {
           headers: {
@@ -121,7 +125,7 @@ class WeddingForm extends React.Component {
 
     axios
       .post(
-        "https://script.google.com/macros/s/AKfycbzor2X6JTr8wPg00D1tWEIy0h0rb0J0P3OMNJRGFXJu8qL3AbRGImAZTsizVr2_TKIuPQ/exec",
+        "https://script.google.com/macros/s/AKfycbwfseJQ1YZozDPvfAuHAc3mK7GaEC4GstXQDM38oDd0EUbWHaH5WrHx_6QQ72NYdT84gw/exec",
         formData,
         {
           headers: {
